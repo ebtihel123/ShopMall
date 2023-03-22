@@ -6,37 +6,48 @@ import {
   TouchableOpacity,
   ScrollView,
   Image,
-  FlatList
+  FlatList,
 } from "react-native";
-import Produits from "../../components/Produits";
+import Produits from "../../components/ProductItem";
 
 const Home = () => {
-  const dataa = [
+  const data = [
     {
-       title: "robe",
-      image: "image",
-   },
-   ];
-  const [data, setData] = useState([]);
+      title: "robe",
+      image:
+        "https://img.freepik.com/free-photo/assortment-t-shirts_23-2147669600.jpg?w=360&t=st=1679447534~exp=1679448134~hmac=990b3efa3faf2b61f87af20f2e07353fffb98a1e4de1372a1a52768add8a0d9b",
+    },
+    {
+      title: "robe1",
+      image:
+        "https://img.freepik.com/free-photo/assortment-t-shirts_23-2147669600.jpg?w=360&t=st=1679447534~exp=1679448134~hmac=990b3efa3faf2b61f87af20f2e07353fffb98a1e4de1372a1a52768add8a0d9b",
+    },
+    {
+      title: "robe2",
+      image:
+        "https://img.freepik.com/free-photo/assortment-t-shirts_23-2147669600.jpg?w=360&t=st=1679447534~exp=1679448134~hmac=990b3efa3faf2b61f87af20f2e07353fffb98a1e4de1372a1a52768add8a0d9b",
+    },
+  ];
+  // const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
 
-  useEffect(() => {
-    fetchData(
-      "https://947d-102-169-30-23.eu.ngrok.io/theshopp/api/v1/all-shops"
-    );
-  }, []);
+  // useEffect(() => {
+  //   fetchData(
+  //     "https://947d-102-169-30-23.eu.ngrok.io/theshopp/api/v1/all-shops"
+  //   );
+  // }, []);
 
-  const fetchData = async (url) => {
-    try {
-      const response = await fetch(url);
-      const json = await response.json();
-      setData(json.results);
-      setFilteredData(json.results);
-      console.log(json.results);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const fetchData = async (url) => {
+  //   try {
+  //     const response = await fetch(url);
+  //     const json = await response.json();
+  //     setData(json.results);
+  //     setFilteredData(json.results);
+  //     console.log(json.results);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   const searchFilterFunction = (text) => {
     if (text) {
@@ -243,8 +254,6 @@ const Home = () => {
         />
       </View>
       <View style={styles.container}>
-        
-
         <Image
           source={require("../../../assets/R.jpg")}
           style={{
@@ -252,7 +261,6 @@ const Home = () => {
             marginLeft: 10,
             width: 150,
             height: 200,
-           
           }}
         />
         <Image
@@ -262,7 +270,6 @@ const Home = () => {
             marginLeft: 10,
             width: 150,
             height: 200,
-           
           }}
         />
         <Image
@@ -272,12 +279,9 @@ const Home = () => {
             marginLeft: 10,
             width: 150,
             height: 200,
-           
           }}
         />
       </View>
-
-      
 
       {filteredData.map((item, index) => {
         return (
@@ -292,8 +296,8 @@ const Home = () => {
           </View>
         );
       })}
-       <View style={styles.separator} />
-       <TouchableOpacity
+      <View style={styles.separator} />
+      <TouchableOpacity
         onPress={() => {}}
         style={{
           flex: 1,
@@ -310,26 +314,20 @@ const Home = () => {
             textDecoration: "underline",
             color: "black",
           }}
-          
-          >Les Produits
-         </Text>
+        >
+          Les Produits
+        </Text>
 
-          <View>
+        <View>
           <FlatList
-           dataa={data}
-           renderItem={(item) => <Produits data={item.item} />}
+            numColumns={3}
+            data={data}
+            renderItem={(item) => <Produits data={item.item} />}
           />
-          </View>
-  
+        </View>
       </TouchableOpacity>
-
-
     </ScrollView>
-
-    
   );
-
-  
 };
 export default Home;
 
@@ -349,7 +347,7 @@ const styles = StyleSheet.create({
   },
   separator: {
     height: 1,
-    backgroundColor: '#ffff',
+    backgroundColor: "#ffff",
     marginVertical: 10,
   },
   rectangle: {

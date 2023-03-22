@@ -2,36 +2,19 @@ import React, { useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { Button } from "react-native";
 
-const Produits = (props) => {
-  
+const ProductItem = (props) => {
   return (
     <View style={styles.productContainer}>
-      <Image
-        style={styles.productImage}
-        source={{ uri: "https://via.placeholder.com/150" }}
-      />
+      <Image style={styles.productImage} source={{ uri: props.data.image }} />
       <View style={styles.productDetails}>
-        <Text style={{ fontSize: 20, marginBottom: 10 }}>
+        <Text style={{ fontSize: 20, marginBottom: 10, color: "black" }}>
           {props.data.title}
         </Text>
-        <Text style={styles.productPrice}>$99.99</Text>
       </View>
     </View>
   );
-  
 };
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-  },
-  productContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginVertical: 10,
-  },
   productImage: {
     width: 80,
     height: 80,
@@ -51,4 +34,4 @@ const styles = StyleSheet.create({
     color: "#888",
   },
 });
-export default Produits;
+export default ProductItem;
