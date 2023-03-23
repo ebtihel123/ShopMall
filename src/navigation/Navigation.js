@@ -14,6 +14,7 @@ import {
 import AntDesign from "react-native-vector-icons/AntDesign";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Cart from "../screens/Cart/Cart";
+import Favorie from "../screens/Favorie/Favorie";
 const Stack = createStackNavigator();
 
 function StackNavigator() {
@@ -54,7 +55,7 @@ function StackNavigator() {
               >
                 <AntDesign name="shoppingcart" size={24} color="black" />
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity onPress={() => { navigation.navigate("Favorie") }}>
                 <AntDesign name="hearto" size={24} color="black" />
               </TouchableOpacity>
             </View>
@@ -103,6 +104,7 @@ function StackNavigator() {
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="Cart" component={Cart} />
+      <Stack.Screen name="Favorie" component={Favorie} />
     </Stack.Navigator>
   );
 }
